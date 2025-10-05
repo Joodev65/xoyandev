@@ -1,0 +1,22 @@
+{
+  "name": "7ooModdss APi",
+  "version": "1.0.0",
+  "description": "Rest APi",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon figure.js",
+    "start": "node figure.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "express": "^4.19.2",
+    "node-fetch": "^3.3.2",
+    "form-data": "^4.0.0",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
+
