@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — 9A Always Aspiring</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="https://files.catbox.moe/4enpyl.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/admin.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+</head>
+<body class="admin-body">
+
+<section id="loginView" class="admin-login">
+  <form id="loginForm" class="login-card">
+    <img src="https://files.catbox.moe/4enpyl.jpg" alt="Logo 9A" class="login-logo">
+    <h1>Admin Panel</h1>
+    <p class="login-sub">9A — Always Aspiring</p>
+
+    <label>
+      Username
+      <input type="text" name="username" autocomplete="username" required>
+    </label>
+    <label>
+      Password
+      <input type="password" name="password" autocomplete="current-password" required>
+    </label>
+
+    <button type="submit" class="btn btn-primary admin-submit">
+      <span class="btn-label">Masuk</span>
+      <span class="spinner" hidden></span>
+    </button>
+    <p id="loginError" class="form-error" hidden></p>
+  </form>
+</section>
+
+<section id="dashboardView" class="admin-dashboard" hidden>
+  <header class="admin-topbar">
+    <div class="admin-brand">
+      <img src="https://files.catbox.moe/4enpyl.jpg" alt="Logo 9A">
+      <span>Admin — 9A Always Aspiring</span>
+    </div>
+    <div class="admin-topbar-actions">
+      <a href="../index.html" target="_blank" class="btn btn-outline btn-sm"><i data-lucide="external-link"></i> Lihat Situs</a>
+      <button id="logoutBtn" class="btn btn-outline btn-sm"><i data-lucide="log-out"></i> Keluar</button>
+    </div>
+  </header>
+
+  <nav class="admin-tabs">
+    <button class="tab-btn active" data-tab="albumTab">Album</button>
+    <button class="tab-btn" data-tab="infoTab">Informasi</button>
+  </nav>
+
+  <div id="albumTab" class="admin-tab-panel active">
+    <form id="albumForm" class="admin-form">
+      <h2>Tambah Foto Album</h2>
+      <label>
+        Judul
+        <input type="text" name="title" required placeholder="Contoh: Perayaan HUT Sekolah">
+      </label>
+      <label>
+        Caption
+        <input type="text" name="caption" placeholder="Caption singkat (opsional)">
+      </label>
+      <label>
+        Tanggal
+        <input type="date" name="date">
+      </label>
+      <label>
+        Foto
+        <input type="file" name="image" accept="image/*" required id="albumImageInput">
+      </label>
+      <div id="albumPreview" class="image-preview" hidden>
+        <img id="albumPreviewImg" alt="Preview">
+      </div>
+      <button type="submit" class="btn btn-primary">
+        <span class="btn-label"><i data-lucide="upload"></i> Upload Album</span>
+        <span class="spinner" hidden></span>
+      </button>
+    </form>
+
+    <div class="admin-list" id="albumList"></div>
+  </div>
+
+  <div id="infoTab" class="admin-tab-panel">
+    <form id="infoForm" class="admin-form">
+      <h2>Tambah Informasi</h2>
+      <label>
+        Judul
+        <input type="text" name="title" required placeholder="Contoh: Libur Semester">
+      </label>
+      <label>
+        Konten (Markdown didukung: ** * [] () `code`)
+        <textarea name="content" rows="6" required placeholder="Tulis pengumuman di sini..."></textarea>
+      </label>
+      <label>
+        Tanggal
+        <input type="date" name="date">
+      </label>
+
+      <div class="markdown-preview-box">
+        <p class="preview-label">Preview</p>
+        <div id="infoPreview" class="info-item"></div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">
+        <span class="btn-label"><i data-lucide="send"></i> Simpan Informasi</span>
+        <span class="spinner" hidden></span>
+      </button>
+    </form>
+
+    <div class="admin-list" id="infoList"></div>
+  </div>
+</section>
+
+<div id="confirmModal" class="modal" hidden>
+  <div class="modal-box">
+    <p id="confirmMessage">Yakin ingin menghapus item ini?</p>
+    <div class="modal-actions">
+      <button id="confirmCancel" class="btn btn-outline btn-sm">Batal</button>
+      <button id="confirmOk" class="btn btn-primary btn-sm">Hapus</button>
+    </div>
+  </div>
+</div>
+
+<div id="editModal" class="modal" hidden>
+  <div class="modal-box modal-box-form">
+    <h3 id="editModalTitle">Edit Item</h3>
+    <form id="editForm" class="admin-form admin-form-plain">
+      <label id="editTitleField">
+        Judul
+        <input type="text" name="title" required>
+      </label>
+      <label id="editCaptionField">
+        Caption
+        <input type="text" name="caption">
+      </label>
+      <label id="editContentField" hidden>
+        Konten (Markdown)
+        <textarea name="content" rows="5"></textarea>
+      </label>
+      <label>
+        Tanggal
+        <input type="date" name="date">
+      </label>
+      <div class="modal-actions">
+        <button type="button" id="editCancel" class="btn btn-outline btn-sm">Batal</button>
+        <button type="submit" class="btn btn-primary btn-sm">
+          <span class="btn-label">Simpan Perubahan</span>
+          <span class="spinner" hidden></span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="toast" class="toast" hidden></div>
+
+<script type="module" src="../js/admin.js"></script>
+</body>
+</html>
