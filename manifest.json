@@ -1,0 +1,16 @@
+{
+  "name": "9A — Always Aspiring",
+  "short_name": "9A Aspiring",
+  "description": "Website resmi kelas 9A Always Aspiring, SMP Methodist 6.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF6F1",
+  "theme_color": "#5C4033",
+  "icons": [
+    {
+      "src": "https://files.catbox.moe/4enpyl.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
