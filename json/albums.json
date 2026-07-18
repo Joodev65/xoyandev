@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Foto Bersama Kelas",
+    "caption": "Always Together, Always Aspiring.",
+    "image": "https://files.catbox.moe/w960zx.jpg",
+    "date": "2026-07-01"
+  },
+  {
+    "id": 2,
+    "title": "Perangkat Kelas",
+    "caption": "Inti pengurus kelas 9A.",
+    "image": "https://files.catbox.moe/myebj1.jpg",
+    "date": "2026-07-05"
+  },
+  {
+    "id": 3,
+    "title": "Semua Perangkat",
+    "caption": "Seluruh pengurus seksi kelas 9A.",
+    "image": "https://files.catbox.moe/l8y04t.jpg",
+    "date": "2026-07-10"
+  }
+]
